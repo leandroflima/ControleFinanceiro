@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Delete Author</h1>
+
+<p>Você deseja excluir o item: {{ produto }}?</p>
+
+<form action="" method="POST">
+  {% csrf_token %}
+  <button type="submit">Excluir</button>
+  <button onclick="window.location.href='../../produtos'">Cancelar</button>
+</form>
+
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Produto Código: {{ produto.codigo }}</h1>
+  <table class="table">
+    <tr>
+      <td><strong>Descrição:</strong></td>
+      <td>{{ produto.descricao }}</td>
+    </tr>
+  </table>
+{% endblock %}

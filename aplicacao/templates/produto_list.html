@@ -1,0 +1,28 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Lista de Produtos</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th colspan="2">
+                    <button onclick="window.location.href='../produto/create'">Criar</button>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if produto_list %}
+            {% for produto in produto_list %}
+            <tr>
+                <td>{{ produto.descricao }}</td>
+                <td>
+                    <button onclick="window.location.href='{{ produto.get_absolute_url }}/update'">Alterar</button>
+                    <button onclick="window.location.href='{{ produto.get_absolute_url }}/delete'">Excluir</button>
+                </td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+</table>
+{% endblock %}

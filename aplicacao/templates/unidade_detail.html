@@ -1,0 +1,15 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Unidade Código: {{ unidade.codigo }}</h1>
+  <table class="table">
+    <tr>
+      <td><strong>Sigla:</strong></td>
+      <td>{{ unidade.sigla }}</td>
+    </tr>
+    <tr>
+      <td><strong>Descrição:</strong></td>
+      <td>{{ unidade.descricao }}</td>
+    </tr>
+  </table>
+{% endblock %}
