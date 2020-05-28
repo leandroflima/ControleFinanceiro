@@ -75,16 +75,21 @@ WSGI_APPLICATION = 'Site.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
-
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
+        'ENGINE': 'django.db.backends.sqlite3',
         'NAME': 'ControleFinanceiro',
-      'HOST': 'mongodb://localhost:27017/ControleFinanceiro',
-        #'USER': '',
-        #'PASSWORD': ''
-   }
+    }
 }
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'djongo',
+#        'NAME': 'ControleFinanceiro',
+#      'HOST': 'mongodb://localhost:27017/ControleFinanceiro',
+#        #'USER': '',
+#        #'PASSWORD': ''
+#   }
+#}
 
 
 # Password validation

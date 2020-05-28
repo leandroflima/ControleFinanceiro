@@ -1,0 +1,30 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Lista de Clientes</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Documento</th>
+                <th colspan="2">
+                    <button onclick="window.location.href='../cliente/create'">Criar</button>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if cliente_list %}
+            {% for cliente in cliente_list %}
+            <tr>
+                <td>{{ cliente.nome }}</td>
+                <td>{{ cliente.documento }}</td>
+                <td>
+                    <button onclick="window.location.href='{{ cliente.get_absolute_url }}/update'">Alterar</button>
+                    <button onclick="window.location.href='{{ cliente.get_absolute_url }}/delete'">Excluir</button>
+                </td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+</table>
+{% endblock %}

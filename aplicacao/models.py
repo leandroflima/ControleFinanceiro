@@ -8,7 +8,7 @@ class Unidade(models.Model):
     descricao = models.CharField(max_length=50)
 
     class Meta:
-        db_table = "unidades"
+        #db_table = "unidades"
         ordering = ['-descricao']
 
     def get_absolute_url(self):
@@ -23,8 +23,8 @@ class Produto(models.Model):
     descricao = models.CharField(max_length=50)
 
     class Meta:
-        db_table = "produtos"
-        ordering = ['-descricao']
+        #db_table = "produtos"
+        ordering = ['descricao']
 
     def get_absolute_url(self):
         return reverse('produto', args=[str(self.codigo)])
@@ -42,7 +42,7 @@ class Cliente(models.Model):
     telefoneSecundario = models.BigIntegerField(null=True, blank=True)
 
     class Meta:
-        db_table = "clientes"
+        #db_table = "clientes"
         ordering = ['-nome']
 
     def get_absolute_url(self):
@@ -58,7 +58,7 @@ class Fornecedor(models.Model):
     telefonePrincipal = models.BigIntegerField()
 
     class Meta:
-        db_table = "fornecedores"
+        #db_table = "fornecedores"
         ordering = ['-nome']
 
     def get_absolute_url(self):
@@ -86,7 +86,7 @@ class Compra(models.Model):
     fornecedor = models.ForeignKey('Fornecedor', on_delete=models.PROTECT)
 
     class Meta:
-        db_table = "compras"
+        #db_table = "compras"
         ordering = ['data', '-produto']
 
     def get_absolute_url(self):
@@ -113,7 +113,7 @@ class Venda(models.Model):
     cliente = models.ForeignKey('Cliente', on_delete=models.PROTECT)
 
     class Meta:
-        db_table = "vendas"
+        #db_table = "vendas"
         ordering = ['data', '-produto']
 
     def get_absolute_url(self):
