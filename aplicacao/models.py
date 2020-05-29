@@ -34,12 +34,27 @@ class Produto(models.Model):
 
 
 class Cliente(models.Model):
+    STATE_CHOICES = [
+        ('AC', 'Acre'), ('AL', 'Alagoas'), ('AP', 'Amapá'),
+        ('AM', 'Amazonas'), ('BA', 'Bahia'), ('CE', 'Ceará'),
+        ('DF', 'Distrito Federal'), ('ES', 'Espírito Santo'),
+        ('GO', 'Goiás'), ('MA', 'Maranhão'), ('MT', 'Mato Grosso'),
+        ('MS', 'Mato Grosso do Sul'), ('MG', 'Minas Gerais'),
+        ('PA', 'Pará'), ('PB', 'Paraíba'), ('PR', 'Paraná'),
+        ('PE', 'Pernambuco'), ('PI', 'Piauí'), ('RJ', 'Rio de Janeiro'),
+        ('RN', 'Rio Grande do Norte'), ('RS', 'Rio Grande do Sul'),
+        ('RO', 'Rondônia'), ('RR', 'Roraima'), ('SC', 'Santa Catarina'),
+        ('SP', 'São Paulo'), ('SE', 'Sergipe'), ('TO', 'Tocantins')
+    ]
     codigo = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=50)
     documento = models.BigIntegerField(null=True, blank=True)
     endereco = models.CharField(max_length=100, null=True, blank=True)
-    telefonePrincipal = models.BigIntegerField()
-    telefoneSecundario = models.BigIntegerField(null=True, blank=True)
+    bairro = models.CharField(max_length=50, null=True, blank=True)
+    cidade = models.CharField(max_length=50, null=True, blank=True)
+    estado = models.CharField(max_length=2, choices=STATE_CHOICES)
+    telefonePrincipal = models.CharField(max_length=15, null=True, blank=True)
+    telefoneSecundario = models.CharField(max_length=15, null=True, blank=True)
 
     class Meta:
         #db_table = "clientes"

@@ -20,7 +20,7 @@ class ClienteDetailView(generic.DetailView):
 
 class ClienteCreate(CreateView):
     model = Cliente
-    fields = ['codigo', 'nome', 'documento', 'endereco', 'telefonePrincipal', 'telefoneSecundario']
+    fields = ['codigo', 'nome', 'documento', 'endereco', 'bairro', 'cidade', 'estado', 'telefonePrincipal', 'telefoneSecundario']
     initial = {'codigo': 1}
     success_url = reverse_lazy('clientes')
     template_name = "cliente/cliente_form.html"
@@ -28,7 +28,7 @@ class ClienteCreate(CreateView):
 
 class ClienteUpdate(UpdateView):
     model = Cliente
-    fields = ['codigo', 'nome', 'documento', 'endereco', 'telefonePrincipal', 'telefoneSecundario']
+    fields = ['codigo', 'nome', 'documento', 'endereco', 'bairro', 'cidade', 'estado', 'telefonePrincipal', 'telefoneSecundario']
     success_url = reverse_lazy('clientes')
     template_name = "cliente/cliente_form.html"
 

@@ -1,12 +1,12 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
+  <h1>Cliente</h1>
   <form action="" method="post">
     {% csrf_token %}
-    <table>
+    <table class="table">
     {{ form.as_table }}
     </table>
-    <button type="submit">Salvar</button>
-    <button onclick="window.location.href='../../clientes'">Cancelar</button>
+    <button class="btn btn-dark btn-sm" type="submit">Salvar</button>
   </form>
 {% endblock %}
