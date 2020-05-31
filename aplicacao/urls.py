@@ -1,9 +1,5 @@
 from django.urls import path
-from Aplicacao import views
-from Aplicacao import views_unidade
-from Aplicacao import views_produto
-from Aplicacao import views_cliente
-
+from Aplicacao.Views import views_cliente, views_produto, views_unidade, views
 
 urlpatterns = [
     path('', views.index, name='index'),

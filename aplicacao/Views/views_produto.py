@@ -10,6 +10,10 @@ class ProdutoView(generic.ListView):
     queryset = Produto.objects.all()
     paginate_by = 10
     template_name = 'produto/produto_list.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['num_itens'] = Produto.objects.all().count()
+        return context
 
 
 class ProdutoDetailView(generic.DetailView):

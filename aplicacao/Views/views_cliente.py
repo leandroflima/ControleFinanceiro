@@ -10,6 +10,10 @@ class ClienteView(generic.ListView):
     queryset = Cliente.objects.all()
     paginate_by = 10
     template_name = 'cliente/cliente_list.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['num_itens'] = Cliente.objects.all().count()
+        return context
 
 
 class ClienteDetailView(generic.DetailView):
