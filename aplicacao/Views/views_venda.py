@@ -1,6 +1,8 @@
 from django.views import generic
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
+
+from Aplicacao.forms import VendaForm
 from Aplicacao.models import Venda
 
 
@@ -24,17 +26,17 @@ class VendaDetail(generic.DetailView):
 
 class VendaCreate(CreateView):
     model = Venda
-    fields = ['codigo', 'data', 'produto', 'unidade', 'quantidade', 'preco', 'situacao', 'cliente']
     initial = {'codigo': 1}
     success_url = reverse_lazy('vendas')
     template_name = "venda/venda_form.html"
+    form_class = VendaForm
 
 
 class VendaUpdate(UpdateView):
     model = Venda
-    fields = ['codigo', 'data', 'produto', 'unidade', 'quantidade', 'preco', 'situacao', 'cliente']
     success_url = reverse_lazy('vendas')
     template_name = "venda/venda_form.html"
+    form_class = VendaForm
 
 
 class VendaDelete(DeleteView):

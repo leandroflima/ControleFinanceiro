@@ -14,20 +14,22 @@
 <body>
   <div class="container-fluid">
     <div class="row">
-      <div class="col-sm-2">
-      {% block sidebar %}
-        <ul class="sidebar-nav">
-          <li><a href="{% url 'index' %}">Home</a></li>
-          <li><a href="{% url 'unidades' %}">Unidades</a></li>
-          <li><a href="{% url 'produtos' %}">Produtos</a></li>
-          <li><a href="{% url 'clientes' %}">Clientes</a></li>
-          <li><a href="{% url 'fornecedores' %}">Fornecedores</a></li>
-          <li><a href="{% url 'compras' %}">Compras</a></li>
-          <li><a href="{% url 'vendas' %}">Vendas</a></li>
-        </ul>
-     {% endblock %}
-      </div>
-      <div class="col-sm-10 ">
+        <div class="col-sm-12">
+          {% block sidebar %}
+          <nav class="navbar sticky-top navbar-dark bg-dark">
+            <a class="navbar-brand" href="{% url 'index' %}">Home</a>
+            <a class="navbar-brand" href="{% url 'unidades' %}">Unidades</a>
+            <a class="navbar-brand" href="{% url 'produtos' %}">Produtos</a>
+            <a class="navbar-brand" href="{% url 'clientes' %}">Clientes</a>
+            <a class="navbar-brand" href="{% url 'fornecedores' %}">Fornecedores</a>
+            <a class="navbar-brand" href="{% url 'compras' %}">Compras</a>
+            <a class="navbar-brand" href="{% url 'vendas' %}">Vendas</a>
+          </nav>
+         {% endblock %}
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
         {% block content %}{% endblock %}
         {% block pagination %}
           {% if is_paginated %}

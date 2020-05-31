@@ -1,6 +1,8 @@
 from django.views import generic
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
+
+from Aplicacao.forms import CompraForm
 from Aplicacao.models import Compra
 
 
@@ -24,18 +26,16 @@ class CompraDetail(generic.DetailView):
 
 class CompraCreate(CreateView):
     model = Compra
-    fields = ['codigo', 'notafiscal', 'data', 'produto', 'unidade', 'quantidade', 'preco', 'situacao', 'fornecedor']
     initial = {'codigo': 1}
     success_url = reverse_lazy('compras')
     template_name = "compra/compra_form.html"
-
+    form_class = CompraForm
 
 class CompraUpdate(UpdateView):
     model = Compra
-    fields = ['codigo', 'notafiscal', 'data', 'produto', 'unidade', 'quantidade', 'preco', 'situacao', 'fornecedor']
     success_url = reverse_lazy('compras')
     template_name = "compra/compra_form.html"
-
+    form_class = CompraForm
 
 class CompraDelete(DeleteView):
     model = Compra
