@@ -4,7 +4,7 @@ from django.views.generic import CreateView, UpdateView, DeleteView
 from Aplicacao.models import Unidade
 
 
-class UnidadeView(generic.ListView):
+class UnidadeList(generic.ListView):
     model = Unidade
     context_object_name = 'unidade_list'
     queryset = Unidade.objects.all()
@@ -15,7 +15,7 @@ class UnidadeView(generic.ListView):
         context['num_itens'] = Unidade.objects.all().count()
         return context
 
-class UnidadeDetailView(generic.DetailView):
+class UnidadeDetail(generic.DetailView):
     model = Unidade
     context_object_name = 'unidade'
     template_name = 'unidade/unidade_detail.html'

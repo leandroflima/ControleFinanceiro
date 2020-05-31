@@ -8,7 +8,7 @@ class Unidade(models.Model):
     descricao = models.CharField(max_length=50)
 
     class Meta:
-        ordering = ['-descricao']
+        ordering = ['descricao']
 
     def get_absolute_url(self):
         return reverse('unidade', args=[str(self.codigo)])
@@ -55,7 +55,7 @@ class Cliente(models.Model):
     telefoneSecundario = models.CharField(max_length=15, null=True, blank=True)
 
     class Meta:
-        ordering = ['-nome']
+        ordering = ['nome']
 
     def get_absolute_url(self):
         return reverse('cliente', args=[str(self.codigo)])

@@ -4,7 +4,7 @@ from django.views.generic import CreateView, UpdateView, DeleteView
 from Aplicacao.models import Fornecedor
 
 
-class FornecedorView(generic.ListView):
+class FornecedorList(generic.ListView):
     model = Fornecedor
     context_object_name = 'fornecedor_list'
     queryset = Fornecedor.objects.all()
@@ -16,7 +16,7 @@ class FornecedorView(generic.ListView):
         return context
 
 
-class FornecedorDetailView(generic.DetailView):
+class FornecedorDetail(generic.DetailView):
     model = Fornecedor
     context_object_name = 'fornecedor'
     template_name = 'fornecedor/fornecedor_detail.html'

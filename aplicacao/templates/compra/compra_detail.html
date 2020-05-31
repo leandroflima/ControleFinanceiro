@@ -1,0 +1,39 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Compra Código: {{ compra.codigo }}</h1>
+  <table class="table">
+    <tr>
+      <td><strong>Data:</strong></td>
+      <td>{{ compra.data }}</td>
+    </tr>
+    <tr>
+      <td><strong>Nota Fiscal:</strong></td>
+      <td>{{ compra.notafiscal }}</td>
+    </tr>
+    <tr>
+      <td><strong>Produto:</strong></td>
+      <td>{{ compra.produto }}</td>
+    </tr>
+    <tr>
+      <td><strong>Unidade:</strong></td>
+      <td>{{ compra.unidade }}</td>
+    </tr>
+    <tr>
+      <td><strong>Quantidade:</strong></td>
+      <td>{{ compra.quantidade }}</td>
+    </tr>
+    <tr>
+      <td><strong>Preço:</strong></td>
+      <td>{{ compra.preco }}</td>
+    </tr>
+    <tr>
+      <td><strong>Situação:</strong></td>
+      <td>{{ compra.situacao }}</td>
+    </tr>
+    <tr>
+      <td><strong>Fornecedor:</strong></td>
+      <td>{{ compra.fornecedor }}</td>
+    </tr>
+  </table>
+{% endblock %}

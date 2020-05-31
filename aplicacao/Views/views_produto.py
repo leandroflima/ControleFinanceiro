@@ -4,7 +4,7 @@ from django.views.generic import CreateView, UpdateView, DeleteView
 from Aplicacao.models import Produto
 
 
-class ProdutoView(generic.ListView):
+class ProdutoList(generic.ListView):
     model = Produto
     context_object_name = 'produto_list'
     queryset = Produto.objects.all()
@@ -16,7 +16,7 @@ class ProdutoView(generic.ListView):
         return context
 
 
-class ProdutoDetailView(generic.DetailView):
+class ProdutoDetail(generic.DetailView):
     model = Produto
     context_object_name = 'produto'
     template_name = 'produto/produto_detail.html'
