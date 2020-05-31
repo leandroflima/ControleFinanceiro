@@ -67,10 +67,10 @@ class Cliente(models.Model):
 class Fornecedor(models.Model):
     codigo = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=50)
-    telefonePrincipal = models.BigIntegerField()
+    telefonePrincipal = models.CharField(max_length=15, null=True, blank=True)
 
     class Meta:
-        ordering = ['-nome']
+        ordering = ['nome']
 
     def get_absolute_url(self):
         return reverse('fornecedor', args=[str(self.codigo)])
@@ -97,7 +97,7 @@ class Compra(models.Model):
     fornecedor = models.ForeignKey('Fornecedor', on_delete=models.PROTECT)
 
     class Meta:
-        ordering = ['data', '-produto']
+        ordering = ['data', 'produto']
 
     def get_absolute_url(self):
         return reverse('compra', args=[str(self.codigo)])
@@ -123,7 +123,7 @@ class Venda(models.Model):
     cliente = models.ForeignKey('Cliente', on_delete=models.PROTECT)
 
     class Meta:
-        ordering = ['data', '-produto']
+        ordering = ['data', 'produto']
 
     def get_absolute_url(self):
         return reverse('venda', args=[str(self.codigo)])

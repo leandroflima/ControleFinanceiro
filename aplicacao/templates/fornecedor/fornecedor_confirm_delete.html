@@ -1,0 +1,15 @@
+
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+<h1>Excluir Fornecedor</h1>
+<form action="" method="POST">
+  {% csrf_token %}
+  <table class="table">
+    <tr><td><p>Você deseja excluir o item: {{ fornecedor }}?</p></td></tr>
+    <tr><td><button class="btn btn-dark btn-sm" type="submit">Excluir</button></td></tr>
+  </table>
+</form>
+
+{% endblock %}
