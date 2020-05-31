@@ -5,6 +5,7 @@
     <table class="table">
         <thead class="thead-dark">
             <tr>
+                <th>Código</th>
                 <th>Nome</th>
                 <th>Documento</th>
                 <th colspan="2">
@@ -16,6 +17,7 @@
         {% if cliente_list %}
             {% for cliente in cliente_list %}
             <tr>
+                <td><a href="{{ cliente.get_absolute_url }}">{{ cliente.codigo }}</a></td>
                 <td>{{ cliente.nome }}</td>
                 <td>{{ cliente.documento }}</td>
                 <td>
@@ -28,7 +30,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="3"><strong>Quantidade de itens:</strong> {{ num_itens }}</td>
+                <td colspan="4"><strong>Quantidade de itens:</strong> {{ num_itens }}</td>
             </tr>
         </tfoot>
     </table>

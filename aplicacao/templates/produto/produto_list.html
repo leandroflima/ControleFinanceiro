@@ -5,6 +5,7 @@
     <table class="table">
         <thead class="thead-dark">
             <tr>
+                <th>Código</th>
                 <th>Descrição</th>
                 <th colspan="2">
                     <button class="btn btn-light btn-sm" onclick="window.location.href='../produto/create'">Criar</button>
@@ -15,6 +16,7 @@
         {% if produto_list %}
             {% for produto in produto_list %}
             <tr>
+                <td><a href="{{ produto.get_absolute_url }}">{{ produto.codigo }}</a></td>
                 <td>{{ produto.descricao }}</td>
                 <td>
                     <button class="btn btn-dark btn-sm" onclick="window.location.href='{{ produto.get_absolute_url }}/update'">Alterar</button>

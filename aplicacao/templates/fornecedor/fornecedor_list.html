@@ -5,6 +5,7 @@
     <table class="table">
         <thead class="thead-dark">
             <tr>
+                <th>Código</th>
                 <th>Nome</th>
                 <th>Telefone</th>
                 <th colspan="2">
@@ -16,6 +17,7 @@
         {% if fornecedor_list %}
             {% for fornecedor in fornecedor_list %}
             <tr>
+                <td><a href="{{ fornecedor.get_absolute_url }}">{{ fornecedor.codigo }}</a></td>
                 <td>{{ fornecedor.nome }}</td>
                 <td>{{ fornecedor.telefonePrincipal }}</td>
                 <td>
@@ -28,7 +30,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="3"><strong>Quantidade de itens:</strong> {{ num_itens }}</td>
+                <td colspan="4"><strong>Quantidade de itens:</strong> {{ num_itens }}</td>
             </tr>
         </tfoot>
     </table>

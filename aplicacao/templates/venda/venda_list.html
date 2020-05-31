@@ -1,0 +1,47 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <h1>Lista de Vendas</h1>
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Código</th>
+                <th>Data</th>
+                <th>Cliente</th>
+                <th>Produto</th>
+                <th>Unidade</th>
+                <th>Quantidade</th>
+                <th>Preço</th>
+                <th>Total</th>
+                <th>
+                    <button class="btn btn-light btn-sm" onclick="window.location.href='../venda/create'">Criar</button>
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if venda_list %}
+            {% for venda in venda_list %}
+            <tr>
+                <td><a href="{{ venda.get_absolute_url }}">{{ venda.codigo }}</a></td>
+                <td>{{ venda.data_formatada }}</td>
+                <td>{{ venda.cliente }}</td>
+                <td>{{ venda.produto }}</td>
+                <td>{{ venda.unidade }}</td>
+                <td>{{ venda.quantidade }}</td>
+                <td>{{ venda.preco_formatado }}</td>
+                <td>{{ venda.total_formatado }}</td>
+                <td>
+                    <button class="btn btn-dark btn-sm" onclick="window.location.href='{{ venda.get_absolute_url }}/update'">Alterar</button>
+                    <button class="btn btn-dark btn-sm" onclick="window.location.href='{{ venda.get_absolute_url }}/delete'">Excluir</button>
+                </td>
+            </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="8"><strong>Quantidade de itens:</strong> {{ num_itens }}</td>
+            </tr>
+        </tfoot>
+    </table>
+{% endblock %}

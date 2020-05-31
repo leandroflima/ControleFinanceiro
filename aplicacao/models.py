@@ -1,6 +1,6 @@
 from django.db import models
 from django.urls import reverse
-
+import locale
 
 class Unidade(models.Model):
     codigo = models.AutoField(primary_key=True)
@@ -14,7 +14,7 @@ class Unidade(models.Model):
         return reverse('unidade', args=[str(self.codigo)])
 
     def __str__(self):
-        return "{0}-{1}".format(self.sigla, self.descricao)
+        return self.descricao
 
 
 class Produto(models.Model):
@@ -88,13 +88,31 @@ class Compra(models.Model):
     ]
     codigo = models.AutoField(primary_key=True)
     notafiscal = models.CharField(max_length=50)
-    data = models.DateTimeField()
+    data = models.DateField()
     produto = models.ForeignKey('Produto', on_delete=models.PROTECT)
     unidade = models.ForeignKey('Unidade', on_delete=models.PROTECT)
     quantidade = models.DecimalField(max_digits=9, decimal_places=3)
     preco = models.DecimalField(max_digits=9, decimal_places=2)
     situacao = models.CharField(max_length=1, choices=COMPRAS_SITUACAO_CHOICES, default=PREVISTO)
     fornecedor = models.ForeignKey('Fornecedor', on_delete=models.PROTECT)
+
+    @property
+    def total(self):
+        return (self.quantidade * self.preco)
+
+    @property
+    def data_formatada(self):
+        return self.data.strftime('%d/%m/%Y')
+
+    @property
+    def preco_formatado(self):
+        locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+        return locale.currency(self.preco, grouping=True, symbol=None)
+
+    @property
+    def total_formatado(self):
+        locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+        return locale.currency(self.total, grouping=True, symbol=None)
 
     class Meta:
         ordering = ['data', 'produto']
@@ -114,13 +132,31 @@ class Venda(models.Model):
         (REALIZADO, 'Realizado'),
     ]
     codigo = models.AutoField(primary_key=True)
-    data = models.DateTimeField()
+    data = models.DateField()
     produto = models.ForeignKey('Produto', on_delete=models.PROTECT)
     unidade = models.ForeignKey('Unidade', on_delete=models.PROTECT)
     quantidade = models.DecimalField(max_digits=9, decimal_places=3)
     preco = models.DecimalField(max_digits=9, decimal_places=2)
     situacao = models.CharField(max_length=1, choices=VENDAS_SITUACAO_CHOICES, default=PREVISTO)
     cliente = models.ForeignKey('Cliente', on_delete=models.PROTECT)
+
+    @property
+    def total(self):
+        return (self.quantidade * self.preco)
+
+    @property
+    def data_formatada(self):
+        return self.data.strftime('%d/%m/%Y')
+
+    @property
+    def preco_formatado(self):
+        locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+        return locale.currency(self.preco, grouping=True, symbol=None)
+
+    @property
+    def total_formatado(self):
+        locale.setlocale(locale.LC_ALL, 'pt_BR.UTF-8')
+        return locale.currency(self.total, grouping=True, symbol=None)
 
     class Meta:
         ordering = ['data', 'produto']

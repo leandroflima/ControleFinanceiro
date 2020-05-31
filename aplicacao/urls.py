@@ -1,5 +1,5 @@
 from django.urls import path
-from Aplicacao.Views import views_compra, views_fornecedor, views_cliente, views_produto, views_unidade, views
+from Aplicacao.Views import views_venda, views_compra, views_fornecedor, views_cliente, views_produto, views_unidade, views
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -33,4 +33,10 @@ urlpatterns = [
     path('compra/create/', views_compra.CompraCreate.as_view(), name='compra_create'),
     path('compra/<int:pk>/update/', views_compra.CompraUpdate.as_view(), name='compra_update'),
     path('compra/<int:pk>/delete/', views_compra.CompraDelete.as_view(), name='compra_delete'),
+
+    path('vendas/', views_venda.VendaList.as_view(), name='vendas'),
+    path('venda/<int:pk>', views_venda.VendaDetail.as_view(), name='venda'),
+    path('venda/create/', views_venda.VendaCreate.as_view(), name='venda_create'),
+    path('venda/<int:pk>/update/', views_venda.VendaUpdate.as_view(), name='venda_update'),
+    path('venda/<int:pk>/delete/', views_venda.VendaDelete.as_view(), name='venda_delete'),
 ]

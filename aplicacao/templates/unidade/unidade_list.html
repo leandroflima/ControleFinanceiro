@@ -5,6 +5,7 @@
     <table class="table">
         <thead class="thead-dark">
             <tr>
+                <th>Código</th>
                 <th>Sigla</th>
                 <th>Descrição</th>
                 <th colspan="2">
@@ -16,6 +17,7 @@
         {% if unidade_list %}
             {% for unidade in unidade_list %}
             <tr>
+                <td><a href="{{ unidade.get_absolute_url }}">{{ unidade.codigo }}</a></td>
                 <td>{{ unidade.sigla }}</td>
                 <td>{{ unidade.descricao }}</td>
                 <td>
@@ -28,7 +30,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="3"><strong>Quantidade de itens:</strong> {{ num_itens }}</td>
+                <td colspan="4"><strong>Quantidade de itens:</strong> {{ num_itens }}</td>
             </tr>
         </tfoot>
     </table>
