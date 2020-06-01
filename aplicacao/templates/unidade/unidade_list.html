@@ -1,23 +1,23 @@
 {% extends "base_generic.html" %}
-
 {% block content %}
-    <h1>Lista de Unidades</h1>
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
-                <th>Código</th>
-                <th>Sigla</th>
-                <th>Descrição</th>
-                <th colspan="2">
-                    <button class="btn btn-light btn-sm" onclick="window.location.href='../unidade/create'">Criar</button>
-                </th>
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-secondary">
+                <td>Código</td>
+                <td>Sigla</td>
+                <td>Descrição</td>
+                <td colspan="2">
+                    <button class="btn btn-primary btn-sm" onclick="window.location.href='../unidade/create'">Criar</button>
+                </td>
             </tr>
         </thead>
         <tbody>
         {% if unidade_list %}
             {% for unidade in unidade_list %}
             <tr>
-                <td><a href="{{ unidade.get_absolute_url }}">{{ unidade.codigo }}</a></td>
+                <td>
+                    <a href="{{ unidade.get_absolute_url }}">{{ unidade.codigo }}</a>
+                </td>
                 <td>{{ unidade.sigla }}</td>
                 <td>{{ unidade.descricao }}</td>
                 <td>
@@ -29,7 +29,7 @@
         {% endif %}
         </tbody>
         <tfoot>
-            <tr>
+            <tr class="table-secondary">
                 <td colspan="4"><strong>Quantidade de itens:</strong> {{ num_itens }}</td>
             </tr>
         </tfoot>

@@ -13,6 +13,7 @@ class FornecedorList(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['num_itens'] = Fornecedor.objects.all().count()
+        context['nav'] = 'fornecedor'
         return context
 
 

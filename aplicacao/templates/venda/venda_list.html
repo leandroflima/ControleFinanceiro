@@ -1,10 +1,9 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-    <h1>Lista de Vendas</h1>
-    <table class="table">
-        <thead class="thead-dark">
-            <tr>
+    <table class="table table-hover">
+        <thead>
+            <tr class="table-secondary">
                 <th>Código</th>
                 <th>Data</th>
                 <th>Cliente</th>
@@ -14,7 +13,7 @@
                 <th>Preço</th>
                 <th>Total</th>
                 <th>
-                    <button class="btn btn-light btn-sm" onclick="window.location.href='../venda/create'">Criar</button>
+                    <button class="btn btn-primary btn-sm" onclick="window.location.href='../venda/create'">Criar</button>
                 </th>
             </tr>
         </thead>
@@ -39,8 +38,8 @@
         {% endif %}
         </tbody>
         <tfoot>
-            <tr>
-                <td colspan="8"><strong>Quantidade de itens:</strong> {{ num_itens }}</td>
+            <tr class="table-secondary">
+                <td colspan="9"><strong>Quantidade de itens:</strong> {{ num_itens }}</td>
             </tr>
         </tfoot>
     </table>

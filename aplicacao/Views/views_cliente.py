@@ -13,6 +13,7 @@ class ClienteList(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['num_itens'] = Cliente.objects.all().count()
+        context['nav'] = 'cliente'
         return context
 
 

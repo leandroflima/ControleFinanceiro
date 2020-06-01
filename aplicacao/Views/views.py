@@ -5,7 +5,8 @@ def index(request):
     request.session['num_visitas'] = num_visitas + 1
 
     context = {
-        'num_visitas': num_visitas
+        'num_visitas': num_visitas,
+        'nav': ''
     }
 
     return render(request, 'index.html', context=context)

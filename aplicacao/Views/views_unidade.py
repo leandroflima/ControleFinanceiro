@@ -13,6 +13,7 @@ class UnidadeList(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['num_itens'] = Unidade.objects.all().count()
+        context['nav'] = 'unidade'
         return context
 
 class UnidadeDetail(generic.DetailView):
