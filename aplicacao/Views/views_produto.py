@@ -21,24 +21,40 @@ class ProdutoDetail(generic.DetailView):
     model = Produto
     context_object_name = 'produto'
     template_name = 'produto/produto_detail.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'produto'
+        return context
 
 
 class ProdutoCreate(CreateView):
     model = Produto
-    fields = ['codigo', 'descricao']
-    initial = {'codigo': 1}
+    fields = ['id', 'codigo', 'descricao']
+    initial = {'id': 1}
     success_url = reverse_lazy('produtos')
     template_name = "produto/produto_form.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'produto'
+        return context
 
 
 class ProdutoUpdate(UpdateView):
     model = Produto
-    fields = ['codigo', 'descricao']
+    fields = ['id', 'codigo', 'descricao']
     success_url = reverse_lazy('produtos')
     template_name = "produto/produto_form.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'produto'
+        return context
 
 
 class ProdutoDelete(DeleteView):
     model = Produto
     success_url = reverse_lazy('produtos')
     template_name = "produto/produto_confirm_delete.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'produto'
+        return context

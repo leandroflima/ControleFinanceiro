@@ -7,7 +7,7 @@ class CompraForm(forms.ModelForm):
 
     class Meta:
         model = Compra
-        fields = ('codigo', 'notafiscal', 'data', 'produto', 'unidade', 'quantidade', 'preco', 'situacao', 'fornecedor')
+        fields = ('id', 'notafiscal', 'data', 'produto', 'unidade', 'quantidade', 'preco', 'situacao', 'fornecedor')
 
 
 class VendaForm(forms.ModelForm):
@@ -15,7 +15,7 @@ class VendaForm(forms.ModelForm):
 
     class Meta:
         model = Venda
-        fields = ('codigo', 'data', 'produto', 'unidade', 'quantidade', 'preco', 'situacao', 'cliente')
+        fields = ('id', 'data', 'produto', 'unidade', 'quantidade', 'preco', 'situacao', 'cliente')
 
 
 

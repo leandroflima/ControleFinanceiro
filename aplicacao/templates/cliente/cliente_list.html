@@ -4,7 +4,7 @@
     <table class="table table-hover">
         <thead>
             <tr class="table-secondary">
-                <th>Código</th>
+                <th>Id</th>
                 <th>Nome</th>
                 <th>Documento</th>
                 <th colspan="2">
@@ -16,7 +16,7 @@
         {% if cliente_list %}
             {% for cliente in cliente_list %}
             <tr>
-                <td><a href="{{ cliente.get_absolute_url }}">{{ cliente.codigo }}</a></td>
+                <td><a href="{{ cliente.get_absolute_url }}">{{ cliente.id }}</a></td>
                 <td>{{ cliente.nome }}</td>
                 <td>{{ cliente.documento }}</td>
                 <td>
@@ -28,7 +28,7 @@
         {% endif %}
         </tbody>
         <tfoot>
-            <tr class="table-secondary">
+            <tr class="table-light">
                 <td colspan="4"><strong>Quantidade de itens:</strong> {{ num_itens }}</td>
             </tr>
         </tfoot>

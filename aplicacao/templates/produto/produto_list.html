@@ -4,9 +4,10 @@
     <table class="table table-hover">
         <thead>
             <tr class="table-secondary">
+                <th>Id</th>
                 <th>Código</th>
                 <th>Descrição</th>
-                <th colspan="2">
+                <th>
                     <button class="btn btn-primary btn-sm" onclick="window.location.href='../produto/create'">Criar</button>
                 </th>
             </tr>
@@ -15,7 +16,8 @@
         {% if produto_list %}
             {% for produto in produto_list %}
             <tr>
-                <td><a href="{{ produto.get_absolute_url }}">{{ produto.codigo }}</a></td>
+                <td><a href="{{ produto.get_absolute_url }}">{{ produto.id }}</a></td>
+                <td>{{ produto.codigo }}</td>
                 <td>{{ produto.descricao }}</td>
                 <td>
                     <button class="btn btn-dark btn-sm" onclick="window.location.href='{{ produto.get_absolute_url }}/update'">Alterar</button>
@@ -26,8 +28,8 @@
         {% endif %}
         </tbody>
         <tfoot>
-            <tr class="table-secondary">
-                <td colspan="3"><strong>Quantidade de itens:</strong> {{ num_itens }}</td>
+            <tr class="table-light">
+                <td colspan="4"><strong>Quantidade de itens:</strong> {{ num_itens }}</td>
             </tr>
         </tfoot>
     </table>

@@ -4,7 +4,7 @@
     <table class="table table-hover">
         <thead>
             <tr class="table-secondary">
-                <th>Código</th>
+                <th>Id</th>
                 <th>Data</th>
                 <th>Nota Fiscal</th>
                 <th>Produto</th>
@@ -21,7 +21,7 @@
         {% if compra_list %}
             {% for compra in compra_list %}
             <tr>
-                <td><a href="{{ compra.get_absolute_url }}">{{ compra.codigo }}</a></td>
+                <td><a href="{{ compra.get_absolute_url }}">{{ compra.id }}</a></td>
                 <td>{{ compra.data_formatada }}</td>
                 <td>{{ compra.notafiscal }}</td>
                 <td>{{ compra.produto }}</td>
@@ -38,7 +38,7 @@
         {% endif %}
         </tbody>
         <tfoot>
-            <tr class="table-secondary">
+            <tr class="table-light">
                 <td colspan="9"><strong>Quantidade de itens:</strong> {{ num_itens }}</td>
             </tr>
         </tfoot>

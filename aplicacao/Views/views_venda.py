@@ -23,14 +23,22 @@ class VendaDetail(generic.DetailView):
     model = Venda
     context_object_name = 'venda'
     template_name = 'venda/venda_detail.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'venda'
+        return context
 
 
 class VendaCreate(CreateView):
     model = Venda
-    initial = {'codigo': 1}
+    initial = {'id': 1}
     success_url = reverse_lazy('vendas')
     template_name = "venda/venda_form.html"
     form_class = VendaForm
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'venda'
+        return context
 
 
 class VendaUpdate(UpdateView):
@@ -38,9 +46,17 @@ class VendaUpdate(UpdateView):
     success_url = reverse_lazy('vendas')
     template_name = "venda/venda_form.html"
     form_class = VendaForm
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'venda'
+        return context
 
 
 class VendaDelete(DeleteView):
     model = Venda
     success_url = reverse_lazy('vendas')
     template_name = "venda/venda_confirm_delete.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'venda'
+        return context

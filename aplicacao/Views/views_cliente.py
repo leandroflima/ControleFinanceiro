@@ -21,24 +21,40 @@ class ClienteDetail(generic.DetailView):
     model = Cliente
     context_object_name = 'cliente'
     template_name = 'cliente/cliente_detail.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'cliente'
+        return context
 
 
 class ClienteCreate(CreateView):
     model = Cliente
-    fields = ['codigo', 'nome', 'documento', 'endereco', 'bairro', 'cidade', 'estado', 'telefonePrincipal', 'telefoneSecundario']
-    initial = {'codigo': 1}
+    fields = ['id', 'nome', 'documento', 'endereco', 'bairro', 'cidade', 'estado', 'telefonePrincipal', 'telefoneSecundario']
+    initial = {'id': 1}
     success_url = reverse_lazy('clientes')
     template_name = "cliente/cliente_form.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'cliente'
+        return context
 
 
 class ClienteUpdate(UpdateView):
     model = Cliente
-    fields = ['codigo', 'nome', 'documento', 'endereco', 'bairro', 'cidade', 'estado', 'telefonePrincipal', 'telefoneSecundario']
+    fields = ['id', 'nome', 'documento', 'endereco', 'bairro', 'cidade', 'estado', 'telefonePrincipal', 'telefoneSecundario']
     success_url = reverse_lazy('clientes')
     template_name = "cliente/cliente_form.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'cliente'
+        return context
 
 
 class ClienteDelete(DeleteView):
     model = Cliente
     success_url = reverse_lazy('clientes')
     template_name = "cliente/cliente_confirm_delete.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'cliente'
+        return context

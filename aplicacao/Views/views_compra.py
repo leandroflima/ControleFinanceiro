@@ -23,22 +23,40 @@ class CompraDetail(generic.DetailView):
     model = Compra
     context_object_name = 'compra'
     template_name = 'compra/compra_detail.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'compra'
+        return context
 
 
 class CompraCreate(CreateView):
     model = Compra
-    initial = {'codigo': 1}
+    initial = {'id': 1}
     success_url = reverse_lazy('compras')
     template_name = "compra/compra_form.html"
     form_class = CompraForm
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'compra'
+        return context
+
 
 class CompraUpdate(UpdateView):
     model = Compra
     success_url = reverse_lazy('compras')
     template_name = "compra/compra_form.html"
     form_class = CompraForm
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'compra'
+        return context
+
 
 class CompraDelete(DeleteView):
     model = Compra
     success_url = reverse_lazy('compras')
     template_name = "compra/compra_confirm_delete.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'compra'
+        return context

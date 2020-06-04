@@ -16,28 +16,45 @@ class UnidadeList(generic.ListView):
         context['nav'] = 'unidade'
         return context
 
+
 class UnidadeDetail(generic.DetailView):
     model = Unidade
     context_object_name = 'unidade'
     template_name = 'unidade/unidade_detail.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'unidade'
+        return context
 
 
 class UnidadeCreate(CreateView):
     model = Unidade
-    fields = ['codigo', 'sigla', 'descricao']
-    initial = {'codigo': 1}
+    fields = ['id', 'sigla', 'descricao']
+    initial = {'id': 1}
     success_url = reverse_lazy('unidades')
     template_name = "unidade/unidade_form.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'unidade'
+        return context
 
 
 class UnidadeUpdate(UpdateView):
     model = Unidade
-    fields = ['codigo', 'sigla', 'descricao']
+    fields = ['id', 'sigla', 'descricao']
     success_url = reverse_lazy('unidades')
     template_name = "unidade/unidade_form.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'unidade'
+        return context
 
 
 class UnidadeDelete(DeleteView):
     model = Unidade
     success_url = reverse_lazy('unidades')
     template_name = "unidade/unidade_confirm_delete.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'unidade'
+        return context

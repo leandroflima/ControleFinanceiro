@@ -21,24 +21,40 @@ class FornecedorDetail(generic.DetailView):
     model = Fornecedor
     context_object_name = 'fornecedor'
     template_name = 'fornecedor/fornecedor_detail.html'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'fornecedor'
+        return context
 
 
 class FornecedorCreate(CreateView):
     model = Fornecedor
-    fields = ['codigo', 'nome', 'telefonePrincipal']
-    initial = {'codigo': 1}
+    fields = ['id', 'nome', 'telefonePrincipal']
+    initial = {'id': 1}
     success_url = reverse_lazy('fornecedores')
     template_name = "fornecedor/fornecedor_form.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'fornecedor'
+        return context
 
 
 class FornecedorUpdate(UpdateView):
     model = Fornecedor
-    fields = ['codigo', 'nome', 'telefonePrincipal']
+    fields = ['id', 'nome', 'telefonePrincipal']
     success_url = reverse_lazy('fornecedores')
     template_name = "fornecedor/fornecedor_form.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'fornecedor'
+        return context
 
 
 class FornecedorDelete(DeleteView):
     model = Fornecedor
     success_url = reverse_lazy('fornecedores')
     template_name = "fornecedor/fornecedor_confirm_delete.html"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['nav'] = 'fornecedor'
+        return context

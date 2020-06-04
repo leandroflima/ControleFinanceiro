@@ -2,8 +2,9 @@ from django.db import models
 from django.urls import reverse
 import locale
 
+
 class Unidade(models.Model):
-    codigo = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     sigla = models.CharField(max_length=3)
     descricao = models.CharField(max_length=50)
 
@@ -11,24 +12,25 @@ class Unidade(models.Model):
         ordering = ['descricao']
 
     def get_absolute_url(self):
-        return reverse('unidade', args=[str(self.codigo)])
+        return reverse('unidade', args=[str(self.id)])
 
     def __str__(self):
         return self.descricao
 
 
 class Produto(models.Model):
-    codigo = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
+    codigo = models.IntegerField(default=0)
     descricao = models.CharField(max_length=50)
 
     class Meta:
         ordering = ['descricao']
 
     def get_absolute_url(self):
-        return reverse('produto', args=[str(self.codigo)])
+        return reverse('produto', args=[str(self.id)])
 
     def __str__(self):
-        return self.descricao
+        return "{0} {1}".format(self.codigo, self.descricao)
 
 
 class Cliente(models.Model):
@@ -44,7 +46,7 @@ class Cliente(models.Model):
         ('RO', 'Rondônia'), ('RR', 'Roraima'), ('SC', 'Santa Catarina'),
         ('SP', 'São Paulo'), ('SE', 'Sergipe'), ('TO', 'Tocantins')
     ]
-    codigo = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=50)
     documento = models.BigIntegerField(null=True, blank=True)
     endereco = models.CharField(max_length=100, null=True, blank=True)
@@ -58,14 +60,14 @@ class Cliente(models.Model):
         ordering = ['nome']
 
     def get_absolute_url(self):
-        return reverse('cliente', args=[str(self.codigo)])
+        return reverse('cliente', args=[str(self.id)])
 
     def __str__(self):
         return self.nome
 
 
 class Fornecedor(models.Model):
-    codigo = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     nome = models.CharField(max_length=50)
     telefonePrincipal = models.CharField(max_length=15, null=True, blank=True)
 
@@ -73,7 +75,7 @@ class Fornecedor(models.Model):
         ordering = ['nome']
 
     def get_absolute_url(self):
-        return reverse('fornecedor', args=[str(self.codigo)])
+        return reverse('fornecedor', args=[str(self.id)])
 
     def __str__(self):
         return self.nome
@@ -86,7 +88,7 @@ class Compra(models.Model):
         (PREVISTO, 'Previsto'),
         (REALIZADO, 'Realizado'),
     ]
-    codigo = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     notafiscal = models.CharField(max_length=50)
     data = models.DateField()
     produto = models.ForeignKey('Produto', on_delete=models.PROTECT)
@@ -118,7 +120,7 @@ class Compra(models.Model):
         ordering = ['data', 'produto']
 
     def get_absolute_url(self):
-        return reverse('compra', args=[str(self.codigo)])
+        return reverse('compra', args=[str(self.id)])
 
     def __str__(self):
         return "{0} {1}".format(self.data, self.produto)
@@ -131,7 +133,7 @@ class Venda(models.Model):
         (PREVISTO, 'Previsto'),
         (REALIZADO, 'Realizado'),
     ]
-    codigo = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     data = models.DateField()
     produto = models.ForeignKey('Produto', on_delete=models.PROTECT)
     unidade = models.ForeignKey('Unidade', on_delete=models.PROTECT)
@@ -162,7 +164,7 @@ class Venda(models.Model):
         ordering = ['data', 'produto']
 
     def get_absolute_url(self):
-        return reverse('venda', args=[str(self.codigo)])
+        return reverse('venda', args=[str(self.id)])
 
     def __str__(self):
         return "{0} {1}".format(self.data, self.produto)

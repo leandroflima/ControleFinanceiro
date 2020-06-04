@@ -1,8 +1,15 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Produto Código: {{ produto.codigo }}</h1>
   <table class="table">
+    <tr>
+      <td><strong>Id:</strong></td>
+      <td>{{ produto.id }}</td>
+    </tr>
+    <tr>
+      <td><strong>Código:</strong></td>
+      <td>{{ produto.codigo }}</td>
+    </tr>
     <tr>
       <td><strong>Descrição:</strong></td>
       <td>{{ produto.descricao }}</td>

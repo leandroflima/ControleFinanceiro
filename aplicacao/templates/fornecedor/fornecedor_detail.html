@@ -1,8 +1,11 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-  <h1>Fornecedor Código: {{ fornecedor.codigo }}</h1>
   <table class="table">
+    <tr>
+      <td><strong>Id:</strong></td>
+      <td>{{ fornecedor.id }}</td>
+    </tr>
     <tr>
       <td><strong>Nome:</strong></td>
       <td>{{ fornecedor.nome }}</td>
