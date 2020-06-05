@@ -16,6 +16,7 @@ class CompraList(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['num_itens'] = Compra.objects.all().count()
         context['nav'] = 'compra'
+        context['listname'] = 'Compras'
         return context
 
 
@@ -26,6 +27,7 @@ class CompraDetail(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'compra'
+        context['listname'] = 'Compras'
         return context
 
 
@@ -38,6 +40,7 @@ class CompraCreate(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'compra'
+        context['listname'] = 'Compras'
         return context
 
 
@@ -49,6 +52,7 @@ class CompraUpdate(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'compra'
+        context['listname'] = 'Compras'
         return context
 
 
@@ -59,4 +63,5 @@ class CompraDelete(DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'compra'
+        context['listname'] = 'Compras'
         return context

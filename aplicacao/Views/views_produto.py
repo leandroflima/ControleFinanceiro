@@ -14,6 +14,7 @@ class ProdutoList(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['num_itens'] = Produto.objects.all().count()
         context['nav'] = 'produto'
+        context['listname'] = 'Produtos'
         return context
 
 
@@ -24,6 +25,7 @@ class ProdutoDetail(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'produto'
+        context['listname'] = 'Produtos'
         return context
 
 
@@ -36,6 +38,7 @@ class ProdutoCreate(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'produto'
+        context['listname'] = 'Produtos'
         return context
 
 
@@ -47,6 +50,7 @@ class ProdutoUpdate(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'produto'
+        context['listname'] = 'Produtos'
         return context
 
 
@@ -57,4 +61,5 @@ class ProdutoDelete(DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'produto'
+        context['listname'] = 'Produtos'
         return context

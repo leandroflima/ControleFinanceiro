@@ -1,0 +1,49 @@
+{% extends "base_generic.html" %}
+
+{% block content_list %}
+<!-- Main content -->
+<section class="content">
+  <!-- Default box -->
+  <div class="card">
+    <div class="card-header">
+    </div>
+    <div class="card-body p-0">
+        {% block content %}
+        {% endblock %}
+        {% block pagination %}
+          {% if is_paginated %}
+            <nav>
+                <ul class="pagination">
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ request.path }}?page={{ page_obj.previous_page_number }}">Anterior</a>
+                        </li>
+                    {% endif %}
+                    {% if page_obj.has_previous %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ request.path }}?page={{ page_obj.previous_page_number }}">{{ page_obj.previous_page_number }}</a>
+                        </li>
+                    {% endif %}
+                    <li class="page-item">
+                        <a class="page-link" href="#"><strong>{{ page_obj.number }}</strong></a>
+                    </li>
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ request.path }}?page={{ page_obj.next_page_number }}">{{ page_obj.next_page_number }}</a>
+                        </li>
+                    {% endif %}
+                    {% if page_obj.has_next %}
+                        <li class="page-item">
+                            <a class="page-link" href="{{ request.path }}?page={{ page_obj.next_page_number }}">Próxima</a>
+                        </li>
+                    {% endif %}
+                    </ul>
+            </nav>
+          {% endif %}
+        {% endblock %}
+    </div>
+    <!-- /.card-body -->
+  </div>
+  <!-- /.card -->
+</section>
+{% endblock %}

@@ -14,6 +14,7 @@ class UnidadeList(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['num_itens'] = Unidade.objects.all().count()
         context['nav'] = 'unidade'
+        context['listname'] = 'Unidades'
         return context
 
 
@@ -24,6 +25,7 @@ class UnidadeDetail(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'unidade'
+        context['listname'] = 'Unidades'
         return context
 
 
@@ -36,6 +38,7 @@ class UnidadeCreate(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'unidade'
+        context['listname'] = 'Unidades'
         return context
 
 
@@ -47,6 +50,7 @@ class UnidadeUpdate(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'unidade'
+        context['listname'] = 'Unidades'
         return context
 
 
@@ -57,4 +61,5 @@ class UnidadeDelete(DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'unidade'
+        context['listname'] = 'Unidades'
         return context

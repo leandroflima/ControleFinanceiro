@@ -14,6 +14,7 @@ class FornecedorList(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['num_itens'] = Fornecedor.objects.all().count()
         context['nav'] = 'fornecedor'
+        context['listname'] = 'Fornecedores'
         return context
 
 
@@ -24,6 +25,7 @@ class FornecedorDetail(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'fornecedor'
+        context['listname'] = 'Fornecedores'
         return context
 
 
@@ -36,6 +38,7 @@ class FornecedorCreate(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'fornecedor'
+        context['listname'] = 'Fornecedores'
         return context
 
 
@@ -47,6 +50,7 @@ class FornecedorUpdate(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'fornecedor'
+        context['listname'] = 'Fornecedores'
         return context
 
 
@@ -57,4 +61,5 @@ class FornecedorDelete(DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'fornecedor'
+        context['listname'] = 'Fornecedores'
         return context

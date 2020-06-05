@@ -14,6 +14,12 @@ class Unidade(models.Model):
     def get_absolute_url(self):
         return reverse('unidade', args=[str(self.id)])
 
+    def get_update_url(self):
+        return reverse('unidade_update', args=[str(self.id)])
+
+    def get_delete_url(self):
+        return reverse('unidade_delete', args=[str(self.id)])
+
     def __str__(self):
         return self.descricao
 

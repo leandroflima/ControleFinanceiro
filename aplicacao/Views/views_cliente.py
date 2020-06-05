@@ -14,6 +14,7 @@ class ClienteList(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['num_itens'] = Cliente.objects.all().count()
         context['nav'] = 'cliente'
+        context['listname'] = 'Clientes'
         return context
 
 
@@ -24,6 +25,7 @@ class ClienteDetail(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'cliente'
+        context['listname'] = 'Clientes'
         return context
 
 
@@ -36,6 +38,7 @@ class ClienteCreate(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'cliente'
+        context['listname'] = 'Clientes'
         return context
 
 
@@ -47,6 +50,7 @@ class ClienteUpdate(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'cliente'
+        context['listname'] = 'Clientes'
         return context
 
 
@@ -57,4 +61,5 @@ class ClienteDelete(DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'cliente'
+        context['listname'] = 'Clientes'
         return context
