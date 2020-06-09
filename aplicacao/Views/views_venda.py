@@ -16,7 +16,6 @@ class VendaList(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['num_itens'] = Venda.objects.all().count()
         context['nav'] = 'venda'
-        context['listname'] = 'Vendas'
         return context
 
 
@@ -27,7 +26,6 @@ class VendaDetail(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'venda'
-        context['listname'] = 'Vendas'
         return context
 
 
@@ -40,7 +38,6 @@ class VendaCreate(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'venda'
-        context['listname'] = 'Vendas'
         return context
 
 
@@ -52,7 +49,6 @@ class VendaUpdate(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'venda'
-        context['listname'] = 'Vendas'
         return context
 
 
@@ -63,5 +59,4 @@ class VendaDelete(DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'venda'
-        context['listname'] = 'Vendas'
         return context

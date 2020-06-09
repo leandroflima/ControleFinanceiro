@@ -1,6 +1,7 @@
 from django.views import generic
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
+from Aplicacao.forms import ClienteForm
 from Aplicacao.models import Cliente
 
 
@@ -14,7 +15,6 @@ class ClienteList(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['num_itens'] = Cliente.objects.all().count()
         context['nav'] = 'cliente'
-        context['listname'] = 'Clientes'
         return context
 
 
@@ -25,32 +25,32 @@ class ClienteDetail(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'cliente'
-        context['listname'] = 'Clientes'
+        context['list_href'] = '../clientes/'
         return context
 
 
 class ClienteCreate(CreateView):
     model = Cliente
-    fields = ['id', 'nome', 'documento', 'endereco', 'bairro', 'cidade', 'estado', 'telefonePrincipal', 'telefoneSecundario']
     initial = {'id': 1}
     success_url = reverse_lazy('clientes')
     template_name = "cliente/cliente_form.html"
+    form_class = ClienteForm
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'cliente'
-        context['listname'] = 'Clientes'
+        context['list_href'] = '../../clientes/'
         return context
 
 
 class ClienteUpdate(UpdateView):
     model = Cliente
-    fields = ['id', 'nome', 'documento', 'endereco', 'bairro', 'cidade', 'estado', 'telefonePrincipal', 'telefoneSecundario']
     success_url = reverse_lazy('clientes')
     template_name = "cliente/cliente_form.html"
+    form_class = ClienteForm
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'cliente'
-        context['listname'] = 'Clientes'
+        context['list_href'] = '../../../clientes/'
         return context
 
 
@@ -61,5 +61,5 @@ class ClienteDelete(DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'cliente'
-        context['listname'] = 'Clientes'
+        context['list_href'] = '../../../clientes/'
         return context

@@ -1,7 +1,7 @@
 {% extends "list.html" %}
 
 {% block content %}
-    <table id="example1" class="table table-bordered table-striped">
+    <table class="table table-bordered table-striped">
         <thead>
             <tr>
                 <th style="width: 10%">Id</th>
@@ -9,7 +9,7 @@
                 <th style="width: 40%">Descrição</th>
                 <th class="project-actions text-right">
                     <a class="btn btn-success btn-sm" href="../unidade/create/">
-                        <i class="fas fa-folder"></i> Criar
+                        <i class="fas fa-plus-square"></i> Criar
                     </a>
                 </th>
             </tr>
@@ -23,7 +23,7 @@
                 <td>{{ unidade.descricao }}</td>
                 <td class="project-actions text-right">
                     <a class="btn btn-primary btn-sm" href="{{ unidade.get_absolute_url }}">
-                        <i class="fas fa-folder"></i> Detalhes
+                        <i class="fas fa-bars"></i> Detalhes
                     </a>
                     <a class="btn btn-info btn-sm" href="{{ unidade.get_update_url }}">
                         <i class="fas fa-pencil-alt"></i> Alterar
@@ -42,22 +42,4 @@
             </tr>
         </tfoot>
     </table>
-
-    <script>
-      $(function () {
-        $("#example1").DataTable({
-          "responsive": true,
-          "autoWidth": false,
-        });
-        $('#example2').DataTable({
-          "paging": true,
-          "lengthChange": false,
-          "searching": false,
-          "ordering": true,
-          "info": true,
-          "autoWidth": false,
-          "responsive": true,
-        });
-      });
-    </script>
 {% endblock %}

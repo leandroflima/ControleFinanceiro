@@ -1,5 +1,19 @@
 from django import forms
-from Aplicacao.models import Compra, Venda
+from Aplicacao.models import Unidade, Compra, Venda, Cliente
+
+
+class UnidadeForm(forms.ModelForm):
+
+    class Meta:
+        model = Unidade
+        fields = ('id', 'sigla', 'descricao')
+
+
+class ClienteForm(forms.ModelForm):
+
+    class Meta:
+        model = Cliente
+        fields = ('id', 'nome', 'documento', 'endereco', 'bairro', 'cidade', 'estado', 'telefonePrincipal', 'telefoneSecundario')
 
 
 class CompraForm(forms.ModelForm):

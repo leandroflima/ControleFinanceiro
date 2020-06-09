@@ -35,6 +35,12 @@ class Produto(models.Model):
     def get_absolute_url(self):
         return reverse('produto', args=[str(self.id)])
 
+    def get_update_url(self):
+        return reverse('produto_update', args=[str(self.id)])
+
+    def get_delete_url(self):
+        return reverse('produto_delete', args=[str(self.id)])
+
     def __str__(self):
         return "{0} {1}".format(self.codigo, self.descricao)
 
@@ -68,6 +74,12 @@ class Cliente(models.Model):
     def get_absolute_url(self):
         return reverse('cliente', args=[str(self.id)])
 
+    def get_update_url(self):
+        return reverse('cliente_update', args=[str(self.id)])
+
+    def get_delete_url(self):
+        return reverse('cliente_delete', args=[str(self.id)])
+
     def __str__(self):
         return self.nome
 
@@ -82,6 +94,12 @@ class Fornecedor(models.Model):
 
     def get_absolute_url(self):
         return reverse('fornecedor', args=[str(self.id)])
+
+    def get_update_url(self):
+        return reverse('fornecedor_update', args=[str(self.id)])
+
+    def get_delete_url(self):
+        return reverse('fornecedor_delete', args=[str(self.id)])
 
     def __str__(self):
         return self.nome
@@ -128,6 +146,12 @@ class Compra(models.Model):
     def get_absolute_url(self):
         return reverse('compra', args=[str(self.id)])
 
+    def get_update_url(self):
+        return reverse('compra_update', args=[str(self.id)])
+
+    def get_delete_url(self):
+        return reverse('compra_delete', args=[str(self.id)])
+
     def __str__(self):
         return "{0} {1}".format(self.data, self.produto)
 
@@ -171,6 +195,12 @@ class Venda(models.Model):
 
     def get_absolute_url(self):
         return reverse('venda', args=[str(self.id)])
+
+    def get_update_url(self):
+        return reverse('venda_update', args=[str(self.id)])
+
+    def get_delete_url(self):
+        return reverse('venda_delete', args=[str(self.id)])
 
     def __str__(self):
         return "{0} {1}".format(self.data, self.produto)

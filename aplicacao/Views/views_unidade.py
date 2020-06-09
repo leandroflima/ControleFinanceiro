@@ -1,6 +1,7 @@
 from django.views import generic
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
+from Aplicacao.forms import UnidadeForm
 from Aplicacao.models import Unidade
 
 
@@ -14,7 +15,6 @@ class UnidadeList(generic.ListView):
         context = super().get_context_data(**kwargs)
         context['num_itens'] = Unidade.objects.all().count()
         context['nav'] = 'unidade'
-        context['listname'] = 'Unidades'
         return context
 
 
@@ -25,32 +25,32 @@ class UnidadeDetail(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'unidade'
-        context['listname'] = 'Unidades'
+        context['list_href'] = '../unidades/'
         return context
 
 
 class UnidadeCreate(CreateView):
     model = Unidade
-    fields = ['id', 'sigla', 'descricao']
     initial = {'id': 1}
     success_url = reverse_lazy('unidades')
     template_name = "unidade/unidade_form.html"
+    form_class = UnidadeForm
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'unidade'
-        context['listname'] = 'Unidades'
+        context['list_href'] = '../../unidades/'
         return context
 
 
 class UnidadeUpdate(UpdateView):
     model = Unidade
-    fields = ['id', 'sigla', 'descricao']
     success_url = reverse_lazy('unidades')
     template_name = "unidade/unidade_form.html"
+    form_class = UnidadeForm
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'unidade'
-        context['listname'] = 'Unidades'
+        context['list_href'] = '../../../unidades/'
         return context
 
 
@@ -61,5 +61,5 @@ class UnidadeDelete(DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'unidade'
-        context['listname'] = 'Unidades'
+        context['list_href'] = '../../../unidades/'
         return context
