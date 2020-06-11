@@ -1,14 +1,16 @@
 {% extends "list.html" %}
 
 {% block content %}
-    <table class="table table-hover">
+    <table class="table table-bordered table-striped">
         <thead>
-            <tr class="table-secondary">
-                <th>Id</th>
-                <th>Nome</th>
-                <th>Telefone</th>
-                <th colspan="2">
-                    <button class="btn btn-primary btn-sm" onclick="window.location.href='../fornecedor/create'">Criar</button>
+            <tr>
+                <th style="width: 10%">Id</th>
+                <th style="width: 40%">Nome</th>
+                <th style="width: 20%">Telefone</th>
+                <th class="project-actions text-right">
+                    <a class="btn btn-success btn-sm" href="../fornecedor/create/">
+                        <i class="fas fa-plus-square"></i> Criar
+                    </a>
                 </th>
             </tr>
         </thead>
@@ -16,12 +18,19 @@
         {% if fornecedor_list %}
             {% for fornecedor in fornecedor_list %}
             <tr>
-                <td><a href="{{ fornecedor.get_absolute_url }}">{{ fornecedor.id }}</a></td>
+                <td>{{ fornecedor.id }}</td>
                 <td>{{ fornecedor.nome }}</td>
                 <td>{{ fornecedor.telefonePrincipal }}</td>
-                <td>
-                    <button class="btn btn-dark btn-sm" onclick="window.location.href='{{ fornecedor.get_absolute_url }}/update'">Alterar</button>
-                    <button class="btn btn-dark btn-sm" onclick="window.location.href='{{ fornecedor.get_absolute_url }}/delete'">Excluir</button>
+                <td class="project-actions text-right">
+                    <a class="btn btn-primary btn-sm" href="{{ fornecedor.get_absolute_url }}">
+                        <i class="fas fa-bars"></i> Detalhes
+                    </a>
+                    <a class="btn btn-info btn-sm" href="{{ fornecedor.get_update_url }}">
+                        <i class="fas fa-pencil-alt"></i> Alterar
+                    </a>
+                    <a class="btn btn-danger btn-sm" href="{{ fornecedor.get_delete_url }}">
+                        <i class="fas fa-trash"></i> Excluir
+                    </a>
                 </td>
             </tr>
             {% endfor %}

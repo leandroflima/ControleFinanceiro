@@ -1,6 +1,8 @@
 from django.views import generic
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
+
+from Aplicacao.forms import ProdutoForm
 from Aplicacao.models import Produto
 
 
@@ -24,29 +26,32 @@ class ProdutoDetail(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'produto'
+        context['list_href'] = '../produtos/'
         return context
 
 
 class ProdutoCreate(CreateView):
     model = Produto
-    fields = ['id', 'codigo', 'descricao']
     initial = {'id': 1}
     success_url = reverse_lazy('produtos')
     template_name = "produto/produto_form.html"
+    form_class = ProdutoForm
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'produto'
+        context['list_href'] = '../../produtos/'
         return context
 
 
 class ProdutoUpdate(UpdateView):
     model = Produto
-    fields = ['id', 'codigo', 'descricao']
     success_url = reverse_lazy('produtos')
     template_name = "produto/produto_form.html"
+    form_class = ProdutoForm
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'produto'
+        context['list_href'] = '../../../produtos/'
         return context
 
 
@@ -57,4 +62,5 @@ class ProdutoDelete(DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'produto'
+        context['list_href'] = '../../../produtos/'
         return context

@@ -1,6 +1,8 @@
 from django.views import generic
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView
+
+from Aplicacao.forms import FornecedorForm
 from Aplicacao.models import Fornecedor
 
 
@@ -24,29 +26,32 @@ class FornecedorDetail(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'fornecedor'
+        context['list_href'] = '../fornecedores/'
         return context
 
 
 class FornecedorCreate(CreateView):
     model = Fornecedor
-    fields = ['id', 'nome', 'telefonePrincipal']
     initial = {'id': 1}
     success_url = reverse_lazy('fornecedores')
     template_name = "fornecedor/fornecedor_form.html"
+    form_class = FornecedorForm
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'fornecedor'
+        context['list_href'] = '../../fornecedores/'
         return context
 
 
 class FornecedorUpdate(UpdateView):
     model = Fornecedor
-    fields = ['id', 'nome', 'telefonePrincipal']
     success_url = reverse_lazy('fornecedores')
     template_name = "fornecedor/fornecedor_form.html"
+    form_class = FornecedorForm
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'fornecedor'
+        context['list_href'] = '../../../fornecedores/'
         return context
 
 
@@ -57,4 +62,5 @@ class FornecedorDelete(DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'fornecedor'
+        context['list_href'] = '../../../fornecedores/'
         return context

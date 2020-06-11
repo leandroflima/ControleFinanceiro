@@ -3,31 +3,11 @@ from django.urls import reverse
 import locale
 
 
-class Unidade(models.Model):
-    id = models.AutoField(primary_key=True)
-    sigla = models.CharField(max_length=3)
-    descricao = models.CharField(max_length=50)
-
-    class Meta:
-        ordering = ['descricao']
-
-    def get_absolute_url(self):
-        return reverse('unidade', args=[str(self.id)])
-
-    def get_update_url(self):
-        return reverse('unidade_update', args=[str(self.id)])
-
-    def get_delete_url(self):
-        return reverse('unidade_delete', args=[str(self.id)])
-
-    def __str__(self):
-        return self.descricao
-
-
 class Produto(models.Model):
     id = models.AutoField(primary_key=True)
     codigo = models.IntegerField(default=0)
-    descricao = models.CharField(max_length=50)
+    descricao = models.CharField(max_length=150)
+    pontos = models.IntegerField(default=0)
 
     class Meta:
         ordering = ['descricao']
@@ -113,10 +93,10 @@ class Compra(models.Model):
         (REALIZADO, 'Realizado'),
     ]
     id = models.AutoField(primary_key=True)
+    numeroPedido = models.CharField(max_length=50, default=1)
     notafiscal = models.CharField(max_length=50)
     data = models.DateField()
     produto = models.ForeignKey('Produto', on_delete=models.PROTECT)
-    unidade = models.ForeignKey('Unidade', on_delete=models.PROTECT)
     quantidade = models.DecimalField(max_digits=9, decimal_places=3)
     preco = models.DecimalField(max_digits=9, decimal_places=2)
     situacao = models.CharField(max_length=1, choices=COMPRAS_SITUACAO_CHOICES, default=PREVISTO)
@@ -153,7 +133,7 @@ class Compra(models.Model):
         return reverse('compra_delete', args=[str(self.id)])
 
     def __str__(self):
-        return "{0} {1}".format(self.data, self.produto)
+        return "{0} {1}".format(self.numeroPedido, self.produto)
 
 
 class Venda(models.Model):
@@ -166,7 +146,6 @@ class Venda(models.Model):
     id = models.AutoField(primary_key=True)
     data = models.DateField()
     produto = models.ForeignKey('Produto', on_delete=models.PROTECT)
-    unidade = models.ForeignKey('Unidade', on_delete=models.PROTECT)
     quantidade = models.DecimalField(max_digits=9, decimal_places=3)
     preco = models.DecimalField(max_digits=9, decimal_places=2)
     situacao = models.CharField(max_length=1, choices=VENDAS_SITUACAO_CHOICES, default=PREVISTO)
@@ -203,4 +182,4 @@ class Venda(models.Model):
         return reverse('venda_delete', args=[str(self.id)])
 
     def __str__(self):
-        return "{0} {1}".format(self.data, self.produto)
+        return "{0} {1} {2}".format(self.id, self.data, self.produto)

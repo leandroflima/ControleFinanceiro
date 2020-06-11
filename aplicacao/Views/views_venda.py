@@ -26,6 +26,7 @@ class VendaDetail(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'venda'
+        context['list_href'] = '../vendas/'
         return context
 
 
@@ -38,6 +39,7 @@ class VendaCreate(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'venda'
+        context['list_href'] = '../../vendas/'
         return context
 
 
@@ -49,6 +51,7 @@ class VendaUpdate(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'venda'
+        context['list_href'] = '../../../vendas/'
         return context
 
 
@@ -59,4 +62,5 @@ class VendaDelete(DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'venda'
+        context['list_href'] = '../../../vendas/'
         return context

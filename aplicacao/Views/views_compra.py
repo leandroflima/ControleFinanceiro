@@ -26,6 +26,7 @@ class CompraDetail(generic.DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'compra'
+        context['list_href'] = '../compras/'
         return context
 
 
@@ -38,6 +39,7 @@ class CompraCreate(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'compra'
+        context['list_href'] = '../../compras/'
         return context
 
 
@@ -49,6 +51,7 @@ class CompraUpdate(UpdateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'compra'
+        context['list_href'] = '../../../compras/'
         return context
 
 
@@ -59,4 +62,5 @@ class CompraDelete(DeleteView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['nav'] = 'compra'
+        context['list_href'] = '../../../compras/'
         return context
