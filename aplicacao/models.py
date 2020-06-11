@@ -99,8 +99,8 @@ class Compra(models.Model):
     produto = models.ForeignKey('Produto', on_delete=models.PROTECT)
     quantidade = models.DecimalField(max_digits=9, decimal_places=3)
     preco = models.DecimalField(max_digits=9, decimal_places=2)
-    situacao = models.CharField(max_length=1, choices=COMPRAS_SITUACAO_CHOICES, default=PREVISTO)
     fornecedor = models.ForeignKey('Fornecedor', on_delete=models.PROTECT)
+    situacao = models.CharField(max_length=1, choices=COMPRAS_SITUACAO_CHOICES, default=PREVISTO)
 
     @property
     def total(self):
@@ -148,8 +148,8 @@ class Venda(models.Model):
     produto = models.ForeignKey('Produto', on_delete=models.PROTECT)
     quantidade = models.DecimalField(max_digits=9, decimal_places=3)
     preco = models.DecimalField(max_digits=9, decimal_places=2)
-    situacao = models.CharField(max_length=1, choices=VENDAS_SITUACAO_CHOICES, default=PREVISTO)
     cliente = models.ForeignKey('Cliente', on_delete=models.PROTECT)
+    situacao = models.CharField(max_length=1, choices=VENDAS_SITUACAO_CHOICES, default=PREVISTO)
 
     @property
     def total(self):

@@ -5,36 +5,28 @@
     {% csrf_token %}
     <table class="table table-bordered table-striped">
       <tr>
-        <td style="width: 20%"><strong>Id:</strong></td>
-        <td>{{ venda.id }}</td>
-      </tr>
-      <tr>
-        <td><strong>Data:</strong></td>
-        <td>{{ venda.data_formatada }}</td>
+        <td style="width: 20%"><strong>Data:</strong></td>
+        <td>{{ form.data }}</td>
       </tr>
       <tr>
         <td><strong>Produto:</strong></td>
-        <td>{{ venda.produto }}</td>
+        <td>{{ form.produto }}</td>
       </tr>
       <tr>
         <td><strong>Quantidade:</strong></td>
-        <td>{{ venda.quantidade }}</td>
+        <td>{{ form.quantidade }}</td>
       </tr>
       <tr>
         <td><strong>Preço:</strong></td>
-        <td>{{ venda.preco_formatado }}</td>
-      </tr>
-      <tr>
-        <td><strong>Total:</strong></td>
-        <td>{{ venda.total_formatado }}</td>
-      </tr>
-      <tr>
-        <td><strong>Situação:</strong></td>
-        <td>{{ venda.get_situacao_display }}</td>
+        <td>{{ form.preco }}</td>
       </tr>
       <tr>
         <td><strong>Cliente:</strong></td>
-        <td>{{ venda.cliente }}</td>
+        <td>{{ form.cliente }}</td>
+      </tr>
+      <tr>
+        <td><strong>Situação:</strong></td>
+        <td>{{ form.situacao }}</td>
       </tr>
       <tfoot>
         <tr>
@@ -48,4 +40,11 @@
       </tfoot>
     </table>
   </form>
+  <script>
+    $(function ()
+    {
+      $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+      $('[data-mask]').inputmask()
+    })
+  </script>
 {% endblock %}

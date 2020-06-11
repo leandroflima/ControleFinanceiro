@@ -1,5 +1,7 @@
+import datetime
+
 from django import forms
-from django.forms import TextInput, NumberInput, Select, DateInput, SelectDateWidget
+from django.forms import TextInput, NumberInput, Select, DateInput, SelectDateWidget, CheckboxInput
 
 from Aplicacao.models import Produto, Cliente, Compra, Venda, Fornecedor
 
@@ -45,36 +47,34 @@ class FornecedorForm(forms.ModelForm):
 
 
 class CompraForm(forms.ModelForm):
-    #data = forms.DateField(widget=forms.SelectDateWidget(empty_label=("Ano", "Mês", "Dia")))
 
     class Meta:
         model = Compra
-        fields = ('id', 'numeroPedido', 'notafiscal', 'data', 'produto', 'quantidade', 'preco', 'situacao', 'fornecedor')
+        fields = ('id', 'numeroPedido', 'notafiscal', 'data', 'produto', 'quantidade', 'preco', 'fornecedor', 'situacao')
         widgets = {
-            'numeroPedido': TextInput(attrs={'type': 'text','class':'form-control','autofocus':''}),
+            'data': DateInput(attrs={'class': 'form-control','autofocus':'','data-inputmask-alias':'datetime','data-inputmask-inputformat':'dd/mm/yyyy','data-mask':''}),
+            'numeroPedido': TextInput(attrs={'type': 'text','class':'form-control'}),
             'notafiscal': TextInput(attrs={'type': 'text','class':'form-control'}),
-            'data': TextInput(attrs={'class': 'form-control','data-inputmask-alias':'datetime','data-inputmask-inputformat':'dd/mm/yyyy','data-mask':''}),
             'produto': Select(attrs={'type': 'text', 'class': 'form-control'}),
             'quantidade': NumberInput(attrs={'class': 'form-control'}),
             'preco': NumberInput(attrs={'class': 'form-control'}),
-            'situacao': Select(attrs={'type': 'text', 'class': 'form-control'}),
             'fornecedor': Select(attrs={'type': 'text', 'class': 'form-control'}),
+            'situacao': Select(attrs={'class': 'form-control'}),
         }
 
 
 class VendaForm(forms.ModelForm):
-    data = forms.DateField(widget=forms.SelectDateWidget(empty_label=("Ano", "Mês", "Dia")))
 
     class Meta:
         model = Venda
-        fields = ('id', 'data', 'produto', 'quantidade', 'preco', 'situacao', 'cliente')
+        fields = ('id', 'data', 'produto', 'quantidade', 'preco', 'cliente', 'situacao')
         widgets = {
-            #'data': DateInput(input_formats=['%d/%m/%Y %H:%M'], attrs={'input_type': 'text', 'class': 'form-control'}),
+            'data': DateInput(attrs={'class': 'form-control','autofocus':'','data-inputmask-alias':'datetime','data-inputmask-inputformat':'dd/mm/yyyy','data-mask':''}),
             'produto': Select(attrs={'type': 'text', 'class': 'form-control'}),
             'quantidade': NumberInput(attrs={'class': 'form-control'}),
             'preco': NumberInput(attrs={'class': 'form-control'}),
-            'situacao': Select(attrs={'type': 'text', 'class': 'form-control'}),
             'cliente': Select(attrs={'type': 'text', 'class': 'form-control'}),
+            'situacao': Select(attrs={'class': 'form-control'}),
         }
 
 

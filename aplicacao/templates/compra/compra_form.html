@@ -26,19 +26,15 @@
       </tr>
       <tr>
         <td><strong>Preço:</strong></td>
-        <td>{{ form.preco_formatado }}</td>
-      </tr>
-      <tr>
-        <td><strong>Total:</strong></td>
-        <td>{{ form.total_formatado }}</td>
-      </tr>
-      <tr>
-        <td><strong>Situação:</strong></td>
-        <td>{{ form.get_situacao_display }}</td>
+        <td>{{ form.preco }}</td>
       </tr>
       <tr>
         <td><strong>Fornecedor:</strong></td>
         <td>{{ form.fornecedor }}</td>
+      </tr>
+      <tr>
+        <td><strong>Situação:</strong></td>
+        <td>{{ form.situacao }}</td>
       </tr>
       <tfoot>
         <tr>
@@ -53,9 +49,10 @@
     </table>
   </form>
   <script>
-    $(function () {
-      //Datemask dd/mm/yyyy
-      $('#data-mask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-
+    $(function ()
+    {
+      $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+      $('[data-mask]').inputmask()
+    })
   </script>
 {% endblock %}
