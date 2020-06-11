@@ -6,7 +6,7 @@ def index(request):
 
     context = {
         'num_visitas': num_visitas,
-        'nav': ''
+        'nav': 'home'
     }
 
-    return render(request, 'index.html', context=context)
+    return render(request, 'home.html', context=context)
